@@ -11,7 +11,7 @@ const products = [
   {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
 ];
 
-export default function ProductTable({ products, inStock }) {
+export default function ProductTable({ search, inStock, submit }) {
   const categoryLabels = [];
 
   if(products.length) {
