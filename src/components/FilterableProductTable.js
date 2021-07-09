@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import SearchBar from './SearchBar';
 
 const products = [
   {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
@@ -40,6 +41,7 @@ export default class FilterableProductTable extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log('Form submitted!');
 
     this.setState({
       submit: true
@@ -47,6 +49,16 @@ export default class FilterableProductTable extends React.Component{
   }
 
   render() {
-    <div className='product-table'></div>
+    const { search, inStock } = this.state;
+    return (
+      <div className='product-table'>
+        <SearchBar 
+          search={search}
+          inStock={inStock}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+      />
+    </div>
+    )
   }
 }
