@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import ProductTable from  './ProductTable';
 
 export default class FilterableProductTable extends React.Component{
   constructor(props) {
@@ -7,19 +8,16 @@ export default class FilterableProductTable extends React.Component{
 
     this.state = {
       search: '',
-      inStock: false,
-      submit: false
+      inStock: false
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(id, e) {
     if(id === 'search') {
       this.setState({
-        'search': e.target.value,
-        'submit': false
+        'search': e.target.value
       });
     } 
     
@@ -30,24 +28,16 @@ export default class FilterableProductTable extends React.Component{
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-
-    this.setState({
-      submit: true
-    })
-  }
-
   render() {
-    const { search, inStock, submit } = this.state;
+    const { search, inStock } = this.state;
     return (
       <div className='product-table'>
         <SearchBar 
           search={search}
           inStock={inStock}
           onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-      />
+        />
+      <ProductTable search={search} inStock={inStock} />
     </div>
     )
   }
