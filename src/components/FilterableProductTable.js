@@ -41,7 +41,6 @@ export default class FilterableProductTable extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Form submitted!');
 
     this.setState({
       submit: true
