@@ -7,7 +7,8 @@ export default function SearchBar({ search, inStock, onChange, onSubmit }) {
         <div className='search-item'>
           <input 
             type="text" 
-            value={search} 
+            value={search}
+            placeholder="Search..." 
             onChange={(e) => onChange('search', e)}
           />
         </div>
