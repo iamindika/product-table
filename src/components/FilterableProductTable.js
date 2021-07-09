@@ -16,7 +16,7 @@ export default class FilterableProductTable extends React.Component{
     this.state = {
       search: '',
       inStock: false,
-      products
+      submit: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,13 +24,26 @@ export default class FilterableProductTable extends React.Component{
   }
 
   handleChange(id, e) {
-    console.log(`id: ${id} is ${e.target.value}`);
+    if(id === 'search') {
+      this.setState({
+        'search': e.target.value,
+        'submit': false
+      });
+    } 
+    
+    if(id === 'inStock') {
+      this.setState(prevState => ({
+        'inStock': !prevState['inStock']
+      }));
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log('Search Form Submitted');
+    this.setState({
+      submit: true
+    })
   }
 
   render() {
